@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class MoveByTouch : MonoBehaviour
 {
-    [SerializeField] float steerSpeed = 0.4f;
-    [SerializeField] float moveSpeed = 0.01f;
+    public Joystick joystick;
+    float horizontalMove = 0f;
+    float verticalMove = 0f;
+    [SerializeField] float moveSpeed = .01f;
 
     // Update is called once per frame
     void Update()
     {
-        float steerAmount = Input.GetAxis("Horizontal") * steerSpeed;
-        float moveAmount = Input.GetAxis("Vertical") * moveSpeed;
-        transform.Rotate(0,0,-steerAmount);
-        transform.Translate(0,moveAmount,0);
+        horizontalMove = joystick.Horizontal * moveSpeed;
+        verticalMove = joystick.Vertical * moveSpeed;
 
+        transform.Translate(horizontalMove,verticalMove,0);
 
-        if (Input.touchCount > 0){
-            Touch touch = Input.GetTouch(0);
-            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-            touchPosition.x = 0f;
-            transform.position = touchPosition;
-        }
+        // for (int i = 0; i < Input.touchCount; i++)
+        // {
+        //     Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.touches[i].position);
+
+            
+        // }
     }
 }

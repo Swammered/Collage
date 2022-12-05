@@ -37,7 +37,6 @@ public class WarpAround : MonoBehaviour
             //Debug.Log("hes too high");
             transform.position = new Vector3(-130,transform.position.y,0);
             StartCoroutine(waiter(transform.position.x,90));
-
         }
         else if(transform.position.y < 90){
             //Debug.Log("hes too low");

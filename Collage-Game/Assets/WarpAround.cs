@@ -6,10 +6,8 @@ using UnityEngine;
 public class WarpAround : MonoBehaviour
     {
     private TrailRenderer trailRenderer;
-
     private void Start() {
         trailRenderer = GetComponent<TrailRenderer>();
-        
     }
     IEnumerator waiter(float posx, float posy)
 {
@@ -22,14 +20,11 @@ public class WarpAround : MonoBehaviour
 }
     private void Update() 
     {
-        
-
         if (transform.position.x > 830)
         {
             //Debug.Log("hes too far right");
             transform.position = new Vector3(-130,transform.position.y,0);
             StartCoroutine(waiter(-130,transform.position.y));
-
         }
         else if(transform.position.x < -130){
             //Debug.Log("hes too far left");
